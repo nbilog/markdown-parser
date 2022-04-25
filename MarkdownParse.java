@@ -20,6 +20,10 @@ public class MarkdownParse {
                 System.out.println("There are no links");
                 break;
             }
+            if (openBracket == -1 || closeBracket == -1){
+                System.out.println("Wrong MD file syntax for links");
+                break;
+            }
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
         }
