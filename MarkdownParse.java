@@ -16,11 +16,15 @@ public class MarkdownParse {
             int closeBracket = markdown.indexOf("]", openBracket);
             int openParen = markdown.indexOf("(", closeBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if (openParen == -1 || closeParen == -1){
+            if (openParen < openBracket || closeParen < closeBracket){
+                System.out.println("Wrong MD file syntax for links. Orders are reversed");
+                break;
+            }
+            else if (openParen == -1 || closeParen == -1){
                 System.out.println("There are no links");
                 break;
             }
-            if (openBracket == -1 || closeBracket == -1){
+            else if (openBracket == -1 || closeBracket == -1){
                 System.out.println("Wrong MD file syntax for links");
                 break;
             }
