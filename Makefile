@@ -1,8 +1,9 @@
-all: target1 target2
-	""
+test: MarkdownParse.class MarkdownParseTest.class
+	java -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar org.junit.runner.JUnitCore MarkdownParseTest
 
-target1:
-	echo "javac MarkdownParse.class"
+MarkdownParse.class:
+	javac MarkdownParse.java
+	java MarkdownParse
 
-target2:
-	echo "javac MarkdownParseTest.class"
+MarkdownParseTest.class:
+	javac -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar MarkdownParseTest.java
